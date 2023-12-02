@@ -15,15 +15,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 require("reflect-metadata");
 const routing_controllers_1 = require("routing-controllers");
+const store_service_1 = require("../services/store.service");
+const store_dto_1 = require("../dto/store.dto");
 let UserController = class UserController {
-    getAll() {
-        return "This action returns all users";
+    constructor() {
+        this.service = new store_service_1.StoreService();
+    }
+    async getAll() {
+        return await this.service.findAll();
     }
     getOne(id) {
         return "This action returns user #" + id;
     }
-    post(user) {
-        return "Saving user...";
+    async post(store) {
+        const response = await this.service.createStore({
+            id: "1",
+            ...store,
+        });
+        console.log(response);
+        return response;
     }
     put(id, user) {
         return "Updating a user...";
@@ -37,7 +47,7 @@ __decorate([
     (0, routing_controllers_1.Get)("/users"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "getAll", null);
 __decorate([
     (0, routing_controllers_1.Get)("/users/:id"),
@@ -50,8 +60,8 @@ __decorate([
     (0, routing_controllers_1.Post)("/users"),
     __param(0, (0, routing_controllers_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [store_dto_1.StoreDto]),
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "post", null);
 __decorate([
     (0, routing_controllers_1.Put)("/users/:id"),
@@ -69,6 +79,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "remove", null);
 exports.UserController = UserController = __decorate([
-    (0, routing_controllers_1.Controller)()
+    (0, routing_controllers_1.JsonController)(),
+    __metadata("design:paramtypes", [])
 ], UserController);
 //# sourceMappingURL=pos.controller.js.map

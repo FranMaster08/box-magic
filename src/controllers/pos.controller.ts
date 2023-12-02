@@ -7,13 +7,21 @@ import {
   Post,
   Put,
   Delete,
+  JsonController,
 } from "routing-controllers";
+import { StoreService } from "../services/store.service";
+import { StoreDto } from "../dto/store.dto";
 
-@Controller()
+@JsonController()
 export class UserController {
+  private service: StoreService;
+  constructor() {
+    this.service = new StoreService();
+  }
+
   @Get("/users")
-  getAll() {
-    return "This action returns all users";
+  async getAll() {
+    return await this.service.findAll();
   }
 
   @Get("/users/:id")
@@ -22,8 +30,13 @@ export class UserController {
   }
 
   @Post("/users")
-  post(@Body() user: any) {
-    return "Saving user...";
+  async post(@Body() store: StoreDto) {
+    const response = await this.service.createStore({
+      id: "1",
+      ...store,
+    });
+    console.log(response);
+    return response;
   }
 
   @Put("/users/:id")
