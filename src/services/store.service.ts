@@ -1,3 +1,4 @@
+import { PgRepository } from "../interfaces/PgRepository";
 import { Store } from "../entites/store.entity";
 import { LocalRepository } from "../interfaces/local.repository";
 import { Repository } from "../interfaces/repositorio";
@@ -6,6 +7,7 @@ export class StoreService {
   private repository: Repository<Store>;
 
   constructor() {
+    // HERENCIA , POLIMORFISMO
     this.repository = new LocalRepository<Store>();
   }
 

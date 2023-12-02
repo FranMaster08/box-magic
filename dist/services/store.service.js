@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StoreService = void 0;
-const local_repository_1 = require("../interfaces/local.repository");
+const PgRepository_1 = require("../interfaces/PgRepository");
 class StoreService {
     constructor() {
-        this.repository = new local_repository_1.LocalRepository();
+        this.repository = new PgRepository_1.PgRepository();
     }
     async findAll() {
         try {
