@@ -9,42 +9,42 @@ import {
   Delete,
   JsonController,
 } from "routing-controllers";
-import { PosService } from "../services/pos.service";
-import { PosDto } from "../dto/pos.dto";
+import { StoreService } from "../services/store.service";
+import { StoreDto } from "../dto/store.dto";
 
 @JsonController()
-export class PosController {
-  private service: PosService;
+export class StoreController {
+  private service: StoreService;
   constructor() {
-    this.service = new PosService();
+    this.service = new StoreService();
   }
 
-  @Get("/pos")
+  @Get("/stors")
   async getAll() {
     return await this.service.findAll();
   }
 
-  @Get("/pos/:id")
+  @Get("/stors/:id")
   getOne(@Param("id") id: number) {
     return "This action returns user #" + id;
   }
 
-  @Post("/pos")
-  async post(@Body() pos: PosDto) {
-    const response = await this.service.createPos({
-      posId: 1,
-      ...pos,
+  @Post("/stors")
+  async post(@Body() store: StoreDto) {
+    const response = await this.service.createStore({
+      id: "1",
+      ...store,
     });
     console.log(response);
     return response;
   }
 
-  @Put("/pos/:id")
+  @Put("/stors/:id")
   put(@Param("id") id: number, @Body() user: any) {
     return "Updating a user...";
   }
 
-  @Delete("/pos/:id")
+  @Delete("/stors/:id")
   remove(@Param("id") id: number) {
     return "Removing user...";
   }

@@ -1,6 +1,7 @@
 import { Repository } from "./repositorio";
 import { db } from "../database/config";
 import * as PGP from "pg-promise";
+
 export class PgRepository<T> implements Repository<T> {
   private db: PGP.IDatabase<any>;
   constructor() {

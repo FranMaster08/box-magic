@@ -4,10 +4,10 @@ exports.db = void 0;
 const PGP = require("pg-promise");
 const pgp = PGP();
 const connection = {
-    user: "cw_cl_pos_registry",
-    host: "cencopay-postgresql-test-qa.c7kdyxer59ah.us-east-1.rds.amazonaws.com",
-    database: "cw_cl_pos_registry",
-    password: "NmA279",
+    user: "user",
+    host: "host",
+    database: "data",
+    password: "pass",
     port: 5432,
 };
 const db = pgp(connection);

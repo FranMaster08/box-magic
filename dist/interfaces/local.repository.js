@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LocalRepository = void 0;
 class LocalRepository {
@@ -24,29 +33,35 @@ class LocalRepository {
             }
         });
     }
-    async create(dto) {
-        return new Promise((resolve, reject) => {
-            this.data.push(dto);
-            resolve(dto);
+    create(dto) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => {
+                this.data.push(dto);
+                resolve(dto);
+            });
         });
     }
-    async update(dto, id) {
-        if (id !== undefined && id < this.data.length) {
-            this.data[id] = dto;
-            return dto;
-        }
-        else {
-            throw new Error(`Invalid id ${id} for update`);
-        }
+    update(dto, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (id !== undefined && id < this.data.length) {
+                this.data[id] = dto;
+                return dto;
+            }
+            else {
+                throw new Error(`Invalid id ${id} for update`);
+            }
+        });
     }
-    async deleted(id) {
-        if (id < this.data.length) {
-            const deletedItem = this.data.splice(id, 1)[0];
-            return deletedItem;
-        }
-        else {
-            throw new Error(`Invalid id ${id} for deletion`);
-        }
+    deleted(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (id < this.data.length) {
+                const deletedItem = this.data.splice(id, 1)[0];
+                return deletedItem;
+            }
+            else {
+                throw new Error(`Invalid id ${id} for deletion`);
+            }
+        });
     }
 }
 exports.LocalRepository = LocalRepository;

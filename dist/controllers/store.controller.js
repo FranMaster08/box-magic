@@ -21,14 +21,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PosController = void 0;
+exports.StoreController = void 0;
 require("reflect-metadata");
 const routing_controllers_1 = require("routing-controllers");
-const pos_service_1 = require("../services/pos.service");
-const pos_dto_1 = require("../dto/pos.dto");
-let PosController = class PosController {
+const store_service_1 = require("../services/store.service");
+const store_dto_1 = require("../dto/store.dto");
+let StoreController = class StoreController {
     constructor() {
-        this.service = new pos_service_1.PosService();
+        this.service = new store_service_1.StoreService();
     }
     getAll() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -38,9 +38,9 @@ let PosController = class PosController {
     getOne(id) {
         return "This action returns user #" + id;
     }
-    post(pos) {
+    post(store) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.service.createPos(Object.assign({ posId: 1 }, pos));
+            const response = yield this.service.createStore(Object.assign({ id: "1" }, store));
             console.log(response);
             return response;
         });
@@ -52,44 +52,44 @@ let PosController = class PosController {
         return "Removing user...";
     }
 };
-exports.PosController = PosController;
+exports.StoreController = StoreController;
 __decorate([
-    (0, routing_controllers_1.Get)("/pos"),
+    (0, routing_controllers_1.Get)("/stors"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], PosController.prototype, "getAll", null);
+], StoreController.prototype, "getAll", null);
 __decorate([
-    (0, routing_controllers_1.Get)("/pos/:id"),
+    (0, routing_controllers_1.Get)("/stors/:id"),
     __param(0, (0, routing_controllers_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], PosController.prototype, "getOne", null);
+], StoreController.prototype, "getOne", null);
 __decorate([
-    (0, routing_controllers_1.Post)("/pos"),
+    (0, routing_controllers_1.Post)("/stors"),
     __param(0, (0, routing_controllers_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [pos_dto_1.PosDto]),
+    __metadata("design:paramtypes", [store_dto_1.StoreDto]),
     __metadata("design:returntype", Promise)
-], PosController.prototype, "post", null);
+], StoreController.prototype, "post", null);
 __decorate([
-    (0, routing_controllers_1.Put)("/pos/:id"),
+    (0, routing_controllers_1.Put)("/stors/:id"),
     __param(0, (0, routing_controllers_1.Param)("id")),
     __param(1, (0, routing_controllers_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)
-], PosController.prototype, "put", null);
+], StoreController.prototype, "put", null);
 __decorate([
-    (0, routing_controllers_1.Delete)("/pos/:id"),
+    (0, routing_controllers_1.Delete)("/stors/:id"),
     __param(0, (0, routing_controllers_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], PosController.prototype, "remove", null);
-exports.PosController = PosController = __decorate([
+], StoreController.prototype, "remove", null);
+exports.StoreController = StoreController = __decorate([
     (0, routing_controllers_1.JsonController)(),
     __metadata("design:paramtypes", [])
-], PosController);
-//# sourceMappingURL=pos.controller.js.map
+], StoreController);
+//# sourceMappingURL=store.controller.js.map

@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StoreService = void 0;
+exports.PosService = void 0;
 const local_repository_1 = require("../interfaces/local.repository");
-class StoreService {
+class PosService {
     constructor() {
         this.repository = new local_repository_1.LocalRepository();
     }
@@ -26,10 +26,10 @@ class StoreService {
             }
         });
     }
-    createStore(store) {
+    createPos(pos) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.repository.create(store);
+                const response = yield this.repository.create(pos);
                 return response;
             }
             catch (error) {
@@ -38,5 +38,5 @@ class StoreService {
         });
     }
 }
-exports.StoreService = StoreService;
-//# sourceMappingURL=store.service.js.map
+exports.PosService = PosService;
+//# sourceMappingURL=pos.service.js.map
